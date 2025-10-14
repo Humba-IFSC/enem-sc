@@ -104,6 +104,7 @@ Contribuições são muito bem-vindas! Se você tem interesse em colaborar com a
 
 - [Humberto Luz Oliveira](http://lattes.cnpq.br/5312067093750370) - Pesquisador (Líder)
 - [Lara Luisa Silva Gomes](http://lattes.cnpq.br/5167995056314562) - Pesquisadora (Colaboradora)
+- [Karla Garcia Luiz](https://lattes.cnpq.br/6383224901459541) - Pesquisadora (Colaboradora)
 - [Braian Robson dos Santos Ferreira](http://lattes.cnpq.br/8714121424825658) - Pesquisador (Bolsista Voluntário)
 - [Douglas João Fonseca de Lima](http://lattes.cnpq.br/0902135800225205) - Pesquisador (Bolsista PIBIC-IC)
 - [Jonathan Weirich Carvalho da Silva](...) - Pesquisador (Bolsista Voluntário)
