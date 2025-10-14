@@ -1,7 +1,14 @@
-# Análise dos Microdados do ENEM: Desigualdade, Meritocracia e Propostas de Políticas Públicas
+# Observatório de Dados Educacionais: Estudos sobre Desempenho, Desigualdade e Políticas Públicas
 
-![Status do Projeto](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Status do Projeto](https://img.shields.io/badge/status-ativo-brightgreen)
 ![Licença](https://img.shields.io/badge/licen%C3%A7a-MIT-blue)
+
+## Sobre este Repositório
+
+Bem-vindo(a) ao repositório central de minhas pesquisas sobre o cenário educacional brasileiro. Este espaço funciona como um **observatório de dados**, reunindo uma série de estudos independentes, mas conectados pelo objetivo comum de utilizar a análise de dados para compreender e propor melhorias na educação pública do Brasil.
+
+As investigações aqui presentes utilizam principalmente microdados de avaliações em larga escala, como o ENEM, e outras fontes de dados abertos para explorar diferentes facetas da nossa realidade educacional.
+
 
 ## Resumo
 
@@ -20,6 +27,17 @@ Este projeto nasce da necessidade de aprofundar esse debate com dados, transform
 - **Debater** criticamente o modelo de avaliação do ENEM e seu papel na reprodução de desigualdades.
 - **Desenvolver** sugestões de políticas públicas baseadas em evidências para promover a inclusão e a equidade no acesso ao ensino superior.
 - **Contribuir** com análises e relatórios técnicos para o Ministério da Igualdade Racial e o Ministério da Educação.
+
+## 📚 Os Seis Estudos
+
+Atualmente, o repositório abrange as seguintes frentes de pesquisa:
+
+1.  **Perfil Socioeconômico do Candidato:** Uma análise aprofundada das características sociais e econômicas dos estudantes e como esses fatores se correlacionam com o acesso e a permanência no sistema de ensino.
+2.  **Qualidade de Ensino nos Institutos Federais:** Investigação sobre indicadores de qualidade e desempenho acadêmico na Rede Federal de Educação Profissional, Científica e Tecnológica.
+3.  **Melhores e Piores Desempenhos (Ranking de Escolas):** Uma análise crítica sobre rankings de escolas, seus métodos, implicações e as narrativas que eles criam sobre qualidade de ensino.
+4.  **Revisão Bibliométrica:** Mapeamento da produção científica sobre um tema específico dentro da educação, identificando os principais autores, tendências e lacunas na literatura.
+5.  **Correlação Habilidades vs. Situação-Problema:** Estudo sobre como diferentes habilidades cognitivas, medidas em avaliações, se correlacionam com a capacidade de resolver situações-problema complexas.
+6.  **Desigualdade, Meritocracia e Políticas Públicas:** A pesquisa central que investiga as desigualdades estruturais no acesso ao ensino superior e propõe políticas públicas baseadas em evidências para promover a equidade.
 
 ## 🛠️ Metodologia
 
