@@ -8,7 +8,7 @@ Todo o conteúdo deste diretório é automaticamente publicado como um site est�
 
 **Acesse o portal online através do link principal:**
 
-[https://https://github.com/Humba-IFSC/enem-sc/](https://https://github.com/Humba-IFSC/enem-sc/)
+[https://https://github.io/Humba-IFSC/enem-sc/](https://https://github.io/Humba-IFSC/enem-sc/)
 
 ## 📂 Estrutura dos Relatórios Publicados
 
