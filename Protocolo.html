@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Integrada TBR-2D-BO | Validação Acadêmica</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        :root {
+            --navy-dark: #020617;
+            --navy-medium: #0f172a;
+            --accent-blue: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: var(--navy-medium);
+        }
+
+        .bg-navy-dark {
+            background-color: var(--navy-dark);
+        }
+
+        .bg-navy-medium {
+            background-color: var(--navy-medium);
+        }
+
+        .text-accent {
+            color: var(--accent-blue);
+        }
+
+        /* Elementos UI Personalizados */
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-active {
+            background-color: var(--accent-blue) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .section-animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .expert-card {
+            border-top: 5px solid var(--navy-medium);
+            transition: 0.3s;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-complexity {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .comp-facil {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .comp-medio {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .comp-dificil {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        /* Estilos de Pop-up */
+        .modal-overlay {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+
+        /* Roadmap Pulse */
+        .roadmap-pulse {
+            border: 2px solid var(--accent-blue);
+            animation: pulse-blue 2s infinite;
+        }
+
+        @keyframes pulse-blue {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="custom-scrollbar">
+
+    <!-- Navegação Global -->
+    <nav class="glass-nav text-white sticky top-0 z-50 border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4 cursor-pointer" onclick="showSection('home')">
+                <div class="bg-blue-600 p-2 rounded-lg shadow-lg">
+                    <i class="fas fa-brain text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-tight leading-none uppercase">TBR-2D-BO</h1>
+                    <p class="text-[9px] uppercase tracking-[0.2em] text-blue-400 font-bold">Consenso & Triangulação</p>
+                </div>
+            </div>
+            <div class="hidden lg:flex gap-6 text-[10px] font-black uppercase tracking-widest">
+                <button onclick="showSection('home')" class="hover:text-blue-400 transition">Início</button>
+                <button onclick="showSection('estudo5')" class="hover:text-blue-400 transition text-blue-300 border-b border-blue-600">Protocolo Estudo 5</button>
+                <button onclick="showSection('triangulacao')" class="hover:text-blue-400 transition">Triangulação</button>
+                <button onclick="showSection('codificacao')" class="hover:text-blue-400 transition">Guia de Verbos</button>
+                <button onclick="showSection('dossie')" class="hover:text-blue-400 transition">Dossiê de Itens</button>
+                <button onclick="showSection('home'); document.getElementById('roadmap-sec').scrollIntoView({behavior: 'smooth'})"
+                    class="text-blue-400 hover:text-white transition font-black"><i class="fas fa-rocket mr-1"></i> Futuro</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Área de Conteúdo Principal -->
+    <main class="container mx-auto py-10 px-6 min-h-screen">
+
+        <!-- SECÇÃO: HOME -->
+        <section id="home" class="page-content section-animate space-y-12">
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <h2 class="text-5xl md:text-6xl font-black text-navy-dark leading-tight">Decodificação Cognitiva do ENEM</h2>
+                <p class="text-slate-500 text-lg leading-relaxed">
+                    Validação da correlação entre a Matriz de Referência e Situações-Problema em Ciências da Natureza.
+                    Uma metodologia baseada na TBR-2D e no consenso de especialistas.
+                </p>
+                <div class="flex justify-center gap-4 pt-4">
+                    <button onclick="showSection('dossie')"
+                        class="bg-navy-medium text-white px-8 py-4 rounded-xl font-black shadow-xl hover:bg-black transition active:scale-95">
+                        Dossiê de Itens <i class="fas fa-chevron-right ml-2"></i>
+                    </button>
+                    <button onclick="showSection('estudo5')"
+                        class="bg-white border border-slate-200 text-navy-medium px-8 py-4 rounded-xl font-black shadow-sm hover:bg-slate-50 transition active:scale-95">
+                        Ver Estudo 5 <i class="fas fa-file-alt ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Global Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div onclick="openModal('amostra')"
+                    class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center text-center cursor-pointer hover:border-blue-400 hover:shadow-md transition">
+                    <div class="bg-blue-50 text-blue-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-vial"></i></div>
+                    <h3 class="font-black text-[10px] uppercase mb-1">Amostra</h3>
+                    <p class="text-2xl font-black">06 Itens</p>
+                    <p class="text-[9px] text-slate-400">13,4% da Prova Azul <i class="fas fa-info-circle ml-1"></i></p>
+                </div>
+
+                <div onclick="openModal('alinhamento')"
+                    class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center text-center cursor-pointer hover:border-green-400 hover:shadow-md transition">
+                    <div class="bg-green-50 text-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-check-circle"></i></div>
+                    <h3 class="font-black text-[10px] uppercase mb-1">Alinhamento Forte</h3>
+                    <p class="text-2xl font-black text-green-600">33.3%</p>
+                    <p class="text-[9px] text-slate-400">Itens 99 e 133 <i class="fas fa-info-circle ml-1"></i></p>
+                </div>
+
+                <div onclick="openModal('divergencia')"
+                    class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex flex-col items-center text-center cursor-pointer hover:border-orange-400 hover:shadow-md transition">
+                    <div class="bg-orange-50 text-orange-500 w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3 class="font-black text-[10px] uppercase mb-1">Divergência</h3>
+                    <p class="text-2xl font-black text-orange-500">66.6%</p>
+                    <p class="text-[9px] text-slate-400">Correlação Moderada/Fraca <i class="fas fa-info-circle ml-1"></i></p>
+                </div>
+
+                <div onclick="openModal('metodo')"
+                    class="bg-navy-dark text-white p-6 rounded-3xl shadow-xl flex flex-col items-center text-center cursor-pointer hover:ring-2 hover:ring-blue-400 transition">
+                    <div class="bg-white/10 text-blue-400 w-12 h-12 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="font-black text-[10px] uppercase mb-1 text-blue-400">Método</h3>
+                    <p class="text-2xl font-black">TBR-2D-BO</p>
+                    <p class="text-[9px] text-slate-400 italic">Humberto-Bechara <i class="fas fa-info-circle ml-1"></i></p>
+                </div>
+            </div>
+
+            <!-- ROADMAP DE PESQUISA -->
+            <div id="roadmap-sec" class="pt-20 space-y-8">
+                <div class="flex items-center gap-4 border-b border-slate-200 pb-4">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center text-xl shadow-lg">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black text-navy-dark uppercase tracking-tight">Perspectivas Futuras</h3>
+                        <p class="text-slate-500 text-sm italic">Fronteiras da Investigação e Implementação do Método TBR-2D-BO</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 roadmap-pulse relative overflow-hidden group cursor-pointer" onclick="openModal('roadmap1')">
+                        <span class="absolute top-4 right-6 text-4xl font-black text-slate-50 opacity-10 group-hover:opacity-20 transition">01</span>
+                        <h4 class="font-black text-blue-600 text-xs uppercase mb-3 tracking-widest">Validação Estatística</h4>
+                        <p class="font-bold text-navy-medium mb-2">Análise Quantitativa via Pré-Testagem</p>
+                        <p class="text-xs text-slate-500 leading-relaxed italic">Cruzamento de dados qualitativos com valores numéricos da pré-testagem oficial.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden group cursor-pointer" onclick="openModal('roadmap2')">
+                        <span class="absolute top-4 right-6 text-4xl font-black text-slate-50 opacity-10 group-hover:opacity-20 transition">02</span>
+                        <h4 class="font-black text-blue-600 text-xs uppercase mb-3 tracking-widest">Modelagem Matemática</h4>
+                        <p class="font-bold text-navy-medium mb-2">Poder Preditivo via Regressão Multivariada</p>
+                        <p class="text-xs text-slate-500 leading-relaxed italic">Análise de regressão entre MR, intenção do elaborador e validação do revisor.</p>
+                    </div>
+
+                    <div class="bg-navy-dark p-8 rounded-[2.5rem] shadow-xl text-white relative overflow-hidden group cursor-pointer" onclick="openModal('roadmap3')">
+                        <span class="absolute top-4 right-6 text-4xl font-black text-white opacity-5 transition">03</span>
+                        <h4 class="font-black text-blue-400 text-[10px] uppercase mb-3 tracking-widest">Validação TRI</h4>
+                        <p class="font-bold mb-2">Análise Cruzada e Diagnóstica (Teoria de Resposta ao Item)</p>
+                        <p class="text-xs text-slate-400 leading-relaxed italic">Sincronização entre complexidade cognitiva e dificuldade estatística da TRI.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100 relative overflow-hidden group cursor-pointer" onclick="openModal('roadmap4')">
+                        <span class="absolute top-4 right-6 text-4xl font-black text-slate-50 opacity-10 group-hover:opacity-20 transition">04</span>
+                        <h4 class="font-black text-blue-600 text-xs uppercase mb-3 tracking-widest">Visualização de Dados</h4>
+                        <p class="font-bold text-navy-medium mb-2">Matriz de Correlação e Mapa de Calor</p>
+                        <p class="text-xs text-slate-500 leading-relaxed italic">Identificação visual de zonas de saturação e lacunas nas competências da prova.</p>
+                    </div>
+                </div>
+
+                <!-- Call to Action Roadmap - Linking to Estudo 5 -->
+                <div class="flex justify-center pt-10">
+                    <button onclick="showSection('estudo5')" class="bg-blue-600 text-white px-10 py-5 rounded-full font-black shadow-2xl hover:scale-105 transition-transform flex items-center gap-4">
+                        <i class="fas fa-file-signature text-2xl"></i>
+                        <div class="text-left">
+                            <p class="text-[10px] uppercase opacity-70 tracking-widest leading-none">Aceder ao Documento</p>
+                            <p class="text-lg">Protocolo de Triangulação (Estudo 5)</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: ESTUDO 5 (CONTEÚDO DO MARKDOWN) -->
+        <section id="estudo5" class="page-content hidden section-animate space-y-12">
+            <div class="border-l-8 border-blue-600 pl-6 space-y-2">
+                <h2 class="text-3xl font-black uppercase text-navy-dark">Estudo 5: Refinamento Metodológico</h2>
+                <p class="text-slate-500 italic">Protocolo de Triangulação e Guia de Codificação Transversal TBR-2D-BO</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Coluna Lateral: Resumo Diagnóstico -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100">
+                        <h4 class="font-black text-xs text-blue-600 uppercase mb-4 tracking-widest">Diagnóstico de Subjetividade</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            A aplicação do método revelou uma lacuna entre a intencionalidade da <strong>Matriz de Referência (MR)</strong> e a execução das <strong>Situações-Problema (SP)</strong>.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-navy-medium">
+                                <p class="text-xs font-bold text-navy-dark">Gargalo: Item 96 (Química)</p>
+                                <p class="text-[10px] text-slate-500 mt-1">Substituição de "Avaliar" por cálculos estequiométricos mecânicos.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-navy-medium">
+                                <p class="text-xs font-bold text-navy-dark">Gargalo: Item 97 (Biologia)</p>
+                                <p class="text-[10px] text-slate-500 mt-1">Reducionismo semântico: "Confrontar" vira mera identificação factual.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-dark p-8 rounded-[2rem] text-white shadow-xl">
+                        <i class="fas fa-exclamation-circle text-blue-400 text-3xl mb-4"></i>
+                        <h4 class="font-black text-xs uppercase mb-2">Variância Irrelevante</h4>
+                        <p class="text-[11px] text-slate-300 italic leading-relaxed">
+                            "Quando pesquisadores classificam correlações sem protocolos rígidos, introduzem variáveis estranhas que não pertencem à proficiência do estudante."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Coluna Principal: Protocolo & Guia -->
+                <div class="lg:col-span-8 space-y-10">
+                    <!-- Protocolo 3+1 -->
+                    <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100 space-y-6">
+                        <h3 class="text-2xl font-black text-navy-dark uppercase flex items-center gap-3">
+                            <i class="fas fa-users-cog text-blue-600"></i> Protocolo de Triangulação (3+1)
+                        </h3>
+                        <p class="text-sm text-slate-600">
+                            Para mitigar a subjetividade, o Estudo 5 estabelece métricas de concordância entre avaliadores (IRR - Inter-Rater Reliability):
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-6 bg-blue-50 rounded-2xl">
+                                <h5 class="font-black text-xs uppercase mb-2 text-blue-600">Concordância Absoluta</h5>
+                                <p class="text-[11px] text-slate-700 italic">Unanimidade (3x0) na classificação do nível cognitivo e da dimensão do conhecimento.</p>
+                            </div>
+                            <div class="p-6 bg-orange-50 rounded-2xl">
+                                <h5 class="font-black text-xs uppercase mb-2 text-orange-600">Voto de Minerva</h5>
+                                <p class="text-[11px] text-slate-700 italic">Acionado pelo Supervisor quando há divergência persistente (2x1 ou 1x1x1).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Codificação Transversal -->
+                    <div class="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100 space-y-8">
+                        <h3 class="text-2xl font-black text-navy-dark uppercase flex items-center gap-3">
+                            <i class="fas fa-code-branch text-green-600"></i> Guia de Codificação Transversal
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-6 border-b border-slate-100 pb-6">
+                                <div class="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center shrink-0">I</div>
+                                <div>
+                                    <h5 class="font-black text-sm uppercase">Fase 1: Codificação da MR</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Identificação da intencionalidade pedagógica através dos verbos da Matriz.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 border-b border-slate-100 pb-6">
+                                <div class="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center shrink-0">II</div>
+                                <div>
+                                    <h5 class="font-black text-sm uppercase">Fase 2: Codificação da SP</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Análise da tarefa real (Comando + Suporte) exigida no ato da resposta.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shrink-0">III</div>
+                                <div>
+                                    <h5 class="font-black text-sm uppercase text-blue-600">Validação Cruzada (TRI)</h5>
+                                    <p class="text-xs text-slate-500 mt-1">Sincronização entre a complexidade qualitativa e a dificuldade estatística (Parâmetro b).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impacto Pedagógico -->
+                    <div class="bg-navy-medium text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
+                        <i class="fas fa-award absolute -bottom-10 -right-10 text-[10rem] opacity-5"></i>
+                        <h3 class="text-xl font-black uppercase mb-6">Impacto Pedagógico e Conclusão</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[10px] uppercase tracking-widest font-bold">
+                            <div class="p-4 border border-white/10 rounded-xl text-blue-400">Elaboradores: Clareza no Design</div>
+                            <div class="p-4 border border-white/10 rounded-xl text-green-400">Professores: Roteiro Preciso</div>
+                            <div class="p-4 border border-white/10 rounded-xl text-amber-400">Estudantes: Avaliação Justa</div>
+                        </div>
+                        <p class="text-sm text-slate-400 italic mt-8 leading-relaxed">
+                            "A transparência e o rigor metodológico são os únicos meios de assegurar que o ENEM funcione como um agente transformador da educação brasileira."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO: TRIANGULAÇÃO (MÓDULO SIMPLES) -->
+        <section id="triangulacao" class="page-content hidden section-animate space-y-10">
+            <!-- Repetição do conteúdo anterior se necessário ou simplificado -->
+             <div class="border-l-8 border-blue-600 pl-6">
+                <h2 class="text-3xl font-black text-navy-dark uppercase tracking-tight">Módulo de Triangulação</h2>
+                <p class="text-slate-500">Perspectivas independentes de análise.</p>
+            </div>
+            <!-- ... (Cards de Especialistas) ... -->
+        </section>
+
+        <!-- SECÇÃO: GUIA DE VERBOS -->
+        <section id="codificacao" class="page-content hidden section-animate space-y-10">
+            <div class="border-l-8 border-navy-medium pl-6">
+                <h2 class="text-3xl font-black text-navy-dark uppercase tracking-tight">Tabelas de Referência (Ferraz & Belhot)</h2>
+                <p class="text-slate-500">Classificação taxonômica por níveis de complexidade.</p>
+            </div>
+            <!-- ... (Tabela de Verbos) ... -->
+        </section>
+
+        <!-- SECÇÃO: DOSSIÊ DE ITENS -->
+        <section id="dossie" class="page-content hidden section-animate space-y-12">
+            <div class="border-l-8 border-navy-medium pl-6">
+                <h2 class="text-3xl font-black text-navy-dark uppercase tracking-tight">Dossiê de Itens Analisados</h2>
+                <p class="text-slate-500">Selecione uma questão para visualizar o estudo detalhado.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <button onclick="openViewer(96)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">96</button>
+                <button onclick="openViewer(97)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">97</button>
+                <button onclick="openViewer(99)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">99</button>
+                <button onclick="openViewer(100)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">100</button>
+                <button onclick="openViewer(132)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">132</button>
+                <button onclick="openViewer(133)" class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-600 hover:text-blue-600 transition-all font-black text-4xl text-slate-300 shadow-sm">133</button>
+            </div>
+
+            <!-- Dossier Viewer (Subpágina Dinâmica) -->
+            <div id="dossier-viewer" class="hidden animate-in zoom-in duration-300">
+                <div class="bg-white rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden">
+                    <div class="bg-navy-medium p-10 text-white flex justify-between items-start">
+                        <div>
+                            <div class="flex gap-2 mb-4">
+                                <span id="v-area-badge" class="bg-blue-600 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Área</span>
+                                <span id="v-corr-badge" class="bg-orange-500 px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Status</span>
+                            </div>
+                            <h3 id="v-id" class="text-7xl font-black tracking-tighter">ITEM 00</h3>
+                        </div>
+                        <button onclick="closeViewer()" class="text-white/20 hover:text-white transition"><i class="fas fa-times-circle text-4xl"></i></button>
+                    </div>
+
+                    <div class="bg-slate-50 flex border-b border-slate-200 overflow-x-auto">
+                        <button onclick="setViewerTab('estudo')" id="tab-v-estudo" class="px-10 py-6 text-[10px] font-black uppercase tracking-widest tab-active border-r border-slate-200">i) Estudo Técnico</button>
+                        <button onclick="setViewerTab('critica')" id="tab-v-critica" class="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400 border-r border-slate-200">ii) Painel de Crítica</button>
+                        <button onclick="setViewerTab('podcast')" id="tab-v-podcast" class="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400">iii) Podcast (Debate)</button>
+                    </div>
+
+                    <div class="p-12">
+                        <div id="c-v-estudo" class="tab-pane space-y-10">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                                <div class="space-y-6">
+                                    <div class="p-8 bg-slate-50 rounded-[2rem] border-l-8 border-navy-medium shadow-sm">
+                                        <h4 class="text-[9px] font-black uppercase text-navy-medium mb-4 tracking-widest">Matriz (MR)</h4>
+                                        <p id="v-mr-text" class="italic text-slate-700 leading-relaxed text-lg">Habilidade...</p>
+                                    </div>
+                                    <div class="p-8 bg-blue-50 rounded-[2rem] border-l-8 border-blue-600 shadow-sm">
+                                        <h4 class="text-[9px] font-black uppercase text-blue-600 mb-4 tracking-widest">Ação (SP)</h4>
+                                        <p id="v-sp-text" class="font-bold text-navy-medium leading-relaxed text-lg">Comando...</p>
+                                    </div>
+                                </div>
+                                <div id="v-corr-box" class="bg-navy-dark p-10 rounded-[2.5rem] text-white text-center flex flex-col justify-center">
+                                    <h4 class="text-blue-400 text-[10px] font-black uppercase mb-8 tracking-widest">Veredito</h4>
+                                    <div class="text-4xl font-black uppercase">MODERADA</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="c-v-critica" class="tab-pane hidden space-y-8">
+                            <div id="v-slides-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+                        </div>
+                        <div id="c-v-podcast" class="tab-pane hidden space-y-12">
+                            <audio id="v-audio" controls class="w-full rounded-xl shadow-lg"><source id="v-audio-src" src=""></audio>
+                            <div id="v-transcript" class="bg-slate-50 p-10 rounded-[2.5rem] italic text-sm text-slate-700 leading-relaxed shadow-inner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Pop-up -->
+    <div id="info-modal" class="modal-overlay fixed inset-0 z-[60] hidden flex items-center justify-center p-6" onclick="closeModal()">
+        <div class="bg-white w-full max-w-lg rounded-[2.5rem] shadow-2xl overflow-hidden animate-in zoom-in duration-300" onclick="event.stopPropagation()">
+            <div class="bg-navy-medium p-6 text-white flex justify-between items-center">
+                <h3 id="modal-title" class="font-black uppercase tracking-widest text-sm text-blue-400">Contexto</h3>
+                <button onclick="closeModal()" class="text-white/50 hover:text-white"><i class="fas fa-times-circle text-xl"></i></button>
+            </div>
+            <div class="p-8">
+                <p id="modal-text" class="text-slate-600 text-sm leading-relaxed italic"></p>
+                <div class="mt-8 text-right">
+                    <button onclick="closeModal()" class="bg-navy-medium text-white px-6 py-2 rounded-xl font-bold text-xs uppercase hover:bg-black transition">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé Global -->
+    <footer class="bg-navy-dark text-slate-500 py-16 mt-20 border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-blue-400 mb-6">TBR-2D-BO | Dashboard ENPEC 2025</p>
+            <p class="text-xs mb-10 max-w-2xl mx-auto opacity-70 italic">© Prof. Dr. Humberto Luz Oliveira | Prof. Dr. Eduardo Bechara Filho</p>
+        </div>
+    </footer>
+
+    <script>
+        const itemDatabase = {
+            96: { area: "Química", mr: "H26 - Avaliar impactos socioambientais na produção de recursos.", sp: "Calcular o ganho percentual de massa de uma transformação química (Rendimento).", corr: "MODERADA", audio: "96.QMC - ENEM_pede_avaliar_mas_cobra_calcular.m4a", transcript: "Especialista A: O item 96 é um clássico exemplo de 'mecanização'. Na MR temos 'Avaliar', mas na prova o aluno apenas 'Calcula'. Dra. Pedagoga: Exato. Aplicar uma fórmula é o nível 3 da TBR. A Matriz pedia o nível 5. É uma correlação moderada." },
+            97: { area: "Biologia", mr: "H3 - Confrontar interpretações científicas com interpretações baseadas no senso comum.", sp: "Identificar a substância responsável (etileno) pelo amadurecimento acelerado.", corr: "MODERADA", audio: "97.m4a", transcript: "Prof. Humberto: O abacate amadurece pelo etileno. Mas cadê a discussão sobre embrulhar em jornal que a habilidade sugeria? Dr. Crítico: O item falha na promessa epistemológica do confronto." },
+            99: { area: "Biologia", mr: "H30 - Avaliar propostas de alcance individual ou coletivo, para a preservação da saúde pública.", sp: "Verificar o material biológico (sangue, secreções) de risco para transmissão da leishmaniose.", corr: "FORTE", audio: "99.m4a", transcript: "Dr. Bechara: Aqui temos um caso de sucesso. Verificar é julgar cenários de contágio de forma integrada. O item exige avaliação sistêmica do ciclo." },
+            100: { area: "Física", mr: "H20 - Caracterizar causas ou efeitos dos movimentos de partículas ou corpos.", sp: "Escolher a representação gráfica correta de um comportamento cinemático.", corr: "FRACA/MODERADA", audio: "100.m4a", transcript: "Minerva: Escolher gráfico não é caracterizar. É reconhecimento visual passivo. O item rebaixa a complexidade da matriz." },
+            132: { area: "Física", mr: "H21 - Utilizar leis físicas e/ou químicas para interpretar fenômenos naturais.", sp: "Representar graficamente a relação entre pressão e temperatura em sistemas fechados.", corr: "MODERADA", audio: "132.m4a", transcript: "Especialista C: Representar é nível 3 (Aplicar). Interpretar exige nível 4 (Analisar). O item é burocrático e perde a essência do fenômeno." },
+            133: { area: "Química", mr: "H27 - Avaliar propostas de intervenção no meio ambiente aplicando conhecimentos químicos.", sp: "Modificar a estrutura de um tensoativo (detergente) para garantir a biodegradabilidade.", corr: "FORTE", audio: "133.m4a", transcript: "Prof. Bechara: Modificar para biodegradar é avaliar na prática. O aluno mobiliza química orgânica profunda para uma solução real." }
+        };
+
+        const modalContent = {
+            amostra: { title: "Contexto: 06 Amostras", text: "A seleção de 06 itens representa um recorte técnico de 13,4% da prova azul de Ciências da Natureza do ENEM 2023. O objetivo foi aplicar o método TBR-2D-BO em uma amostra diversificada que abrange as disciplinas de Biologia, Física e Química." },
+            alinhamento: { title: "Contexto: Alinhamento Forte", text: "Ocorre quando a Situação-Problema (SP) exige exatamente o nível de complexidade cognitiva prometido pela Matriz de Referência (MR). Os itens 99 e 133 são exemplos 'padrão ouro'." },
+            divergencia: { title: "Contexto: Divergência", text: "Revela o 'Dilema do Verbo'. A Matriz usa verbos complexos (Avaliar), mas o item cobra tarefas de ordem inferior (Calcular). Isso gera um gap estatístico." },
+            metodo: { title: "Contexto: Método TBR-2D-BO", text: "Proposto por Humberto Oliveira e Eduardo Bechara Filho, utiliza a Taxonomia de Bloom Revisada Bidimensional para reduzir a subjetividade interpretativa e mapear a coerência do exame." },
+            roadmap1: { title: "Próximo Passo: Pré-Testagem", text: "Integrar os valores numéricos dos itens pré-testados para validar as categorias qualitativas do método." },
+            roadmap2: { title: "Próximo Passo: Regressão", text: "Modelagem matemática para prever o alinhamento futuro de novos itens a partir do comportamento histórico dos elaboradores." },
+            roadmap3: { title: "Próximo Passo: Validação TRI", text: "Validar se o nível cognitivo da TBR-2D-BO corresponde aos parâmetros de dificuldade (b) da Teoria de Resposta ao Item." },
+            roadmap4: { title: "Próximo Passo: Mapas de Calor", text: "Construção de heatmaps para identificar zonas de saturação ou lacunas nas competências exigidas em cada edição do ENEM." }
+        };
+
+        function showSection(id) {
+            document.querySelectorAll('.page-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            window.scrollTo(0, 0);
+            
+            // Highlight nav button if active
+            const navButtons = document.querySelectorAll('nav button');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-blue-400', 'border-b', 'border-blue-600');
+            });
+            // Ad-hoc logic for study 5
+            if(id === 'estudo5') {
+                 // can style specifically if needed
+            }
+        }
+
+        function openModal(type) {
+            const content = modalContent[type];
+            document.getElementById('modal-title').innerText = content.title;
+            document.getElementById('modal-text').innerText = content.text;
+            document.getElementById('info-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('info-modal').classList.add('hidden');
+        }
+
+        function openViewer(id) {
+            const data = itemDatabase[id];
+            document.getElementById('v-id').innerText = `ITEM ${id}`;
+            document.getElementById('v-area-badge').innerText = data.area;
+            document.getElementById('v-corr-badge').innerText = `Correlação ${data.corr}`;
+            document.getElementById('v-mr-text').innerText = data.mr;
+            document.getElementById('v-sp-text').innerText = data.sp;
+            document.getElementById('v-audio-src').src = data.audio;
+            document.getElementById('v-audio').load();
+            document.getElementById('v-transcript').innerText = data.transcript;
+
+            const box = document.getElementById('v-corr-box');
+            box.innerText = data.corr;
+            box.className = "bg-navy-dark p-10 rounded-[2.5rem] text-white text-center flex flex-col justify-center text-4xl font-black uppercase ";
+            if (data.corr === 'FORTE') box.classList.add('bg-green-600');
+            else if (data.corr.includes('FRACA')) box.classList.add('bg-red-600');
+            else box.classList.add('bg-orange-500');
+
+            document.getElementById('dossier-viewer').classList.remove('hidden');
+            setViewerTab('estudo');
+        }
+
+        function closeViewer() {
+            document.getElementById('dossier-viewer').classList.add('hidden');
+            document.getElementById('v-audio').pause();
+        }
+
+        function setViewerTab(tab) {
+            document.querySelectorAll('#dossier-viewer .tab-pane').forEach(c => c.classList.add('hidden'));
+            document.getElementById(`c-v-${tab}`).classList.remove('hidden');
+            document.querySelectorAll('button[id^="tab-v-"]').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-400');
+            });
+            document.getElementById(`tab-v-${tab}`).classList.add('tab-active');
+            document.getElementById(`tab-v-${tab}`).classList.remove('text-slate-400');
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('info-modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+
+</html>

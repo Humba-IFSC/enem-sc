@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapa 4 - Integração TRI | TBR-2D-BO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .prose h1 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-weight: 900;
+            color: #020617;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+
+        .prose h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .prose p {
+            color: #475569;
+            line-height: 1.625;
+            margin-bottom: 1rem;
+        }
+
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+
+        .prose li strong {
+            color: #0f172a;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased selection:bg-blue-100">
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../index.html" class="group flex items-center gap-3 text-[#0f172a] hover:text-blue-600 transition">
+                <i class="fas fa-arrow-left text-xl group-hover:-translate-x-1 transition-transform"></i>
+                <div class="flex flex-col">
+                    <span
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-blue-400">Voltar
+                        para</span>
+                    <span class="font-bold text-sm">Dashboard Principal</span>
+                </div>
+            </a>
+            <div class="text-right">
+                <a href="../index.html#metodologia"
+                    class="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-800 transition">Metodologia
+                    do Projeto</a>
+                <p class="font-bold text-xs text-slate-400">Etapa 4</p>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-16 max-w-4xl">
+        <article class="bg-white p-12 rounded-[2.5rem] shadow-sm border border-slate-100 prose prose-slate max-w-none">
+            <h1>4. Integração com a Teoria de Resposta ao Item (TRI)</h1>
+
+            <h2>Validação Cruzada (Qualitativa x Quantitativa)</h2>
+            <p>A validação final do método ocorre quando a complexidade cognitiva (analisada nas etapas anteriores)
+                converge com a dificuldade estatística medida pela TRI.</p>
+
+            <h2>Método de Cruzamento EC-TRI</h2>
+            <ul>
+                <li>
+                    <strong>Itens Procedurais (SP - Aplicar/Procedural):</strong>
+                    Devem apresentar dificuldade <strong>moderada</strong>. Se for muito alta, pode indicar falhas no
+                    design do item ou barreiras de conteúdo não previstas (ex: Item 96).
+                </li>
+                <li>
+                    <strong>Itens de Alta Ordem (CA/EP - Analisar/Avaliar):</strong>
+                    Devem obrigatoriamente apresentar <strong>alta dificuldade</strong>. Se for baixa, sugere que o item
+                    permite acerto por eliminação ou "chute", não medindo a competência real.
+                </li>
+            </ul>
+
+            <p class="bg-blue-50 p-6 rounded-xl border border-blue-100 text-blue-800 text-sm font-semibold mt-8">
+                Este cruzamento garante que o ENEM avalie o pensamento crítico e não apenas a memorização ou técnicas de
+                resolução de prova.
+            </p>
+        </article>
+    </main>
+
+    <footer class="text-center py-12 text-slate-400 text-xs font-bold uppercase tracking-widest opacity-50">
+        © 2025 Projeto ENEM TBR-2D-BO
+    </footer>
+</body>
+
+</html>

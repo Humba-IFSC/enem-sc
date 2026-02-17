@@ -1,0 +1,246 @@
+[0;34mSelected Notebook: Correlação (0b8ee894-e07f-4b64-bc2e-b6f5ce8f318b)[0m
+[0;32mListing sources for notebook...[0m
+Starting browser...
+2026-02-17 13:03:48.613 | INFO     | notebooklm_mcp.client:_start_browser:45 - Using undetected-chromedriver for better compatibility
+2026-02-17 13:03:48.613 | INFO     | notebooklm_mcp.client:_start_browser:55 - Removing stale lock: /home/humba/Documentos/Meus_Projetos/Correlacao_ENEM/chrome_profile_notebooklm/SingletonSocket
+Authenticating...
+2026-02-17 13:03:51.036 | INFO     | notebooklm_mcp.client:_authenticate_sync:130 - Navigating to: https://notebooklm.google.com/notebook/0b8ee894-e07f-4b64-bc2e-b6f5ce8f318b
+2026-02-17 13:03:53.870 | DEBUG    | notebooklm_mcp.client:_authenticate_sync:139 - Current URL after navigation: https://notebooklm.google.com/notebook/0b8ee894-e07f-4b64-bc2e-b6f5ce8f318b
+2026-02-17 13:03:53.870 | INFO     | notebooklm_mcp.client:_authenticate_sync:143 - ✅ Already authenticated via persistent session!
+Sending: Liste as 
+fontes deste 
+notebook em formato 
+de lista (incluindo 
+autores e títulos).
+2026-02-17 13:04:04.941 | INFO     | notebooklm_mcp.client:_send_message_sync:193 - Found chat input with selector: textarea:not([disabled])
+2026-02-17 13:04:06.239 | INFO     | notebooklm_mcp.client:_send_message_sync:210 - Message sent successfully
+Waiting for 
+response...
+2026-02-17 13:04:06.240 | INFO     | notebooklm_mcp.client:_wait_for_streaming_response:237 - Waiting for streaming response to complete...
+2026-02-17 13:04:06.731 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:08.074 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:09.356 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:10.783 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:12.160 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:13.673 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:15.057 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:16.699 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:18.148 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:19.535 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:20.910 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:22.556 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:24.026 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:25.685 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:27.067 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:28.736 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:29.932 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:31.383 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:32.774 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:34.475 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:35.836 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:37.505 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:39.062 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: arrow_forward...
+2026-02-17 13:04:40.574 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:42.333 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:43.956 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:45.442 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:46.918 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:48.581 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:256 - Response updated: Liste as fontes deste notebook em formato de lista...
+2026-02-17 13:04:50.027 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (1/3)
+2026-02-17 13:04:51.656 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (2/3)
+2026-02-17 13:04:53.283 | DEBUG    | notebooklm_mcp.client:_wait_for_streaming_response:244 - Response stable (3/3)
+2026-02-17 13:04:53.470 | INFO     | notebooklm_mcp.client:_wait_for_streaming_response:251 - ✅ Response appears complete
+╭─ 🤖 NotebookLM R─╮
+│ Liste as fontes  │
+│ deste notebook   │
+│ em formato de    │
+│ lista (incluindo │
+│ autores e        │
+│ títulos).        │
+│ Com base nos     │
+│ documentos       │
+│ presentes neste  │
+│ notebook, aqui   │
+│ estão as fontes  │
+│ organizadas por  │
+│ categoria, com   │
+│ seus respectivos │
+│ títulos e        │
+│ autores          │
+│ identificados:   │
+│ Artigo           │
+│ Científico       │
+│ (Trabalho        │
+│ Principal)       │
+│ • Título:        │
+│ Correlação entre │
+│ as situações     │
+│ problemas e as   │
+│ Habilidades da   │
+│ Matriz de        │
+│ Referência em    │
+│ Questões de      │
+│ Ciências da      │
+│ Natureza do ENEM │
+│ 2023             │
+│ (Apresentado no  │
+│ XV ENPEC).       │
+│ • Autores: Ruan  │
+│ Jesus do Santos, │
+│ Alexandre Paio   │
+│ Mastelari,       │
+│ Amanda Kaori     │
+│ Siratsute, Prof. │
+│ Dr. Humberto Luz │
+│ Oliveira e Prof. │
+│ Dr. Eduardo      │
+│ Bechara Filho12. │
+│ Documentação     │
+│ Oficial          │
+│ • Título: Matriz │
+│ de Referência    │
+│ ENEM.            │
+│ • Autor:         │
+│ Ministério da    │
+│ Educação (MEC) / │
+│ Instituto        │
+│ Nacional de      │
+│ Estudos e        │
+│ Pesquisas        │
+│ Educacionais     │
+│ Anísio Teixeira  │
+│ (INEP)3.         │
+│ Materiais de     │
+│ Apoio e Revisão  │
+│ (Texto)          │
+│ • Título: Manual │
+│ de Fundamentos:  │
+│ Decifrando a     │
+│ Dificuldade das  │
+│ Questões         │
+│ (Taxonomia de    │
+│ Bloom) (Arquivo: │
+│ Decifrando a     │
+│ Dificuldade das  │
+│ Questões         │
+│ (Taxonomia de    │
+│ Bloom).md).      │
+│     ◦ Descrição: │
+│ Um guia          │
+│ explicativo      │
+│ sobre a          │
+│ aplicação da     │
+│ Taxonomia de     │
+│ Bloom para       │
+│ estudantes4.     │
+│ • Título:        │
+│ Revisão do       │
+│ Artigo (Arquivo: │
+│ 202412090610 -   │
+│ Artigo ENPEC -   │
+│ Análise.md).     │
+│     ◦ Descrição: │
+│ Uma revisão      │
+│ crítica do       │
+│ artigo principal │
+│ (peer review),   │
+│ apontando pontos │
+│ fortes, fracos e │
+│ sugestões5.      │
+│ • Título:        │
+│ Metodologia      │
+│ TBR-2D-BO:       │
+│ Análise da       │
+│ Complexidade     │
+│ Cognitiva no     │
+│ ENEM.            │
+│     ◦ Descrição: │
+│ Um resumo        │
+│ textual da       │
+│ metodologia e    │
+│ dos resultados6. │
+│ • Tabelas de     │
+│ Dados:           │
+│     ◦ Tabela     │
+│ Correlação MR vs │
+│ SP - TBR ENPEC   │
+│ 2025.md7.        │
+│     ◦ Tabela     │
+│ Correlação MR vs │
+│ SP - TBR ENPEC   │
+│ 2025             │
+│ (Markor).PDF8.   │
+│ Transcrições de  │
+│ Áudio e Vídeo    │
+│ (Debates e       │
+│ Análises         │
+│ Específicas)     │
+│ Estas fontes são │
+│ debates (formato │
+│ podcast/vídeo)   │
+│ analisando a     │
+│ aplicação da     │
+│ metodologia em   │
+│ itens            │
+│ específicos:     │
+│ • Visão Geral e  │
+│ Metodologia:     │
+│     ◦            │
+│ Decodificando_o_ │
+│ ENEM.mp49.       │
+│     ◦            │
+│ O_DNA_Secreto_da │
+│ _Prova_do_ENEM.m │
+│ p410.            │
+│     ◦            │
+│ Validando_o_méto │
+│ do_TBR-2D-BO_com │
+│ _a_TRI.m4a       │
+│ (Discussão sobre │
+│ a validação do   │
+│ método usando a  │
+│ Teoria de        │
+│ Resposta ao      │
+│ Item)11.         │
+│ • Análises de    │
+│ Itens            │
+│ Específicos:     │
+│     ◦ 100.m4a    │
+│ (Física - Item   │
+│ 100)12.          │
+│     ◦ 132.m4a    │
+│ (Física - Item   │
+│ 132)13.          │
+│     ◦ 133.m4a    │
+│ (Química - Item  │
+│ 133)14.          │
+│     ◦ 96.QMC -   │
+│ ENEM_pede_avalia │
+│ r_mas_cobra_calc │
+│ ular.m4a         │
+│ (Química - Item  │
+│ 96)15.           │
+│     ◦ 97.m4a     │
+│ (Biologia - Item │
+│ 97)16.           │
+│     ◦ 99.m4a     │
+│ (Biologia - Item │
+│ 99)17.           │
+│ keep_pin         │
+│ Salvar nas       │
+│ observações      │
+│ Quais são as 5   │
+│ etapas do        │
+│ protocolo        │
+│ TBR-2D-BO?       │
+│ Como o item 99   │
+│ de biologia      │
+│ exemplifica uma  │
+│ correlação       │
+│ forte?           │
+│ Quais melhorias  │
+│ futuras são      │
+│ sugeridas para   │
+│ reduzir a        │
+│ subjetividade?   │
+╰──────────────────╯

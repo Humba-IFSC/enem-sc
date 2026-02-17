@@ -1,0 +1,15 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"status\":\"success\",\"message\":\"Voc\u00ea tem acesso a outros notebooks al\u00e9m deste? Existe algum notebook na sua lista chamado 'ENEM', 'TBR-2D-BO' ou 'Coer\u00eancia Cognitiva'?\",\"response\":\"Voc\u00ea tem acesso a outros notebooks al\u00e9m deste? Existe algum notebook na sua lista chamado 'ENEM', 'TBR-2D-BO' ou 'Coer\u00eancia Cognitiva'?\\nLooking for clues...\",\"notebook_id\":\"54edf03f-279f-41ca-8f4a-fd23d8fc9d87\"}"
+    }
+  ],
+  "structuredContent": {
+    "status": "success",
+    "message": "Voc\u00ea tem acesso a outros notebooks al\u00e9m deste? Existe algum notebook na sua lista chamado 'ENEM', 'TBR-2D-BO' ou 'Coer\u00eancia Cognitiva'?",
+    "response": "Voc\u00ea tem acesso a outros notebooks al\u00e9m deste? Existe algum notebook na sua lista chamado 'ENEM', 'TBR-2D-BO' ou 'Coer\u00eancia Cognitiva'?\nLooking for clues...",
+    "notebook_id": "54edf03f-279f-41ca-8f4a-fd23d8fc9d87"
+  },
+  "isError": false
+}
