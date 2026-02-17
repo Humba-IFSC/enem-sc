@@ -36,7 +36,7 @@ Atualmente, o repositório abrange as seguintes frentes de pesquisa:
 2.  **Qualidade de Ensino nos Institutos Federais:** Investigação sobre indicadores de qualidade e desempenho acadêmico na Rede Federal de Educação Profissional, Científica e Tecnológica.
 3.  **Melhores e Piores Desempenhos (Ranking de Escolas):** Uma análise crítica sobre rankings de escolas, seus métodos, implicações e as narrativas que eles criam sobre qualidade de ensino.
 4.  **Revisão Bibliométrica:** Mapeamento da produção científica sobre um tema específico dentro da educação, identificando os principais autores, tendências e lacunas na literatura.
-5.  **[Correlação Habilidades vs. Situação-Problema:]**(https://humba-ifsc.github.io/enem-sc/estudo_05_correlacao_habilidades_vs_situacaoproblema/) Estudo sobre como diferentes habilidades cognitivas, medidas em avaliações, se correlacionam com a capacidade de resolver situações-problema complexas.
+5.  [**Correlação Habilidades vs. Situação-Problema:**](https://humba-ifsc.github.io/enem-sc/estudo_05_correlacao_habilidades_vs_situacaoproblema/) Estudo sobre como diferentes habilidades cognitivas, medidas em avaliações, se correlacionam com a capacidade de resolver situações-problema complexas.
 6.  **Desigualdade, Meritocracia e Políticas Públicas:** A pesquisa central que investiga as desigualdades estruturais no acesso ao ensino superior e propõe políticas públicas baseadas em evidências para promover a equidade. [Acessar Docs do Edital 018/2025 - CPNq/MIR](https://humba-ifsc.github.io/enem-sc/docs/Documetos_Edital_018_2025_CNPq_MIR.pdf)
 
 ## 🛠️ Metodologia
