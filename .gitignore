@@ -69,4 +69,15 @@ figures/
 
 # Arquivos de configuração com senhas
 config.ini
+
+# Arquivos de configuração com senhas
+config.ini
 credentials.json
+client_secret.json
+service_account.json
+*.key
+
+# Browser Profiles (CRITICAL SECURITY)
+chrome_profile_notebooklm/
+chrome_profile_*/
+User Data/
