@@ -26,7 +26,7 @@ A pesquisa evolui para uma integração técnica profunda:
 1.  **Análise de Pré-Testagem:** Validação com valores numéricos oficiais.
 2.  **Poder Preditivo:** Regressão multivariada entre MR e SP.
 3.  **Validação TRI:** Cruzamento da complexidade cognitiva com a curva de dificuldade estatística.
-4.  **Mapas de Calor:** Visualização da densidade das competências na prova.
+4.  **[Mapa de Calor](Respostas%20às%20Críticas.md#mapa-de-calor):** Visualização da densidade das competências na prova.
 
 ## 🔗 Links e Recursos
 
