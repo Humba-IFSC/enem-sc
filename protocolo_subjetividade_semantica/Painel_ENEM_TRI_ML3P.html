@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise Interativa de Parâmetros TRI</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Chosen Palette: Warm Neutral Harmony -->
+<!-- Application Structure Plan: A thematic, single-page dashboard is chosen over a linear report format to enhance user engagement and understanding. The structure prioritizes interactive learning. It starts with a foundational overview (Intro, TRI vs. TCT), moves to the core interactive element (Parameter Explorer with a dynamic chart), and concludes with practical implications (Computational Diagnostics and Recommendations). This flow guides the user from theory to hands-on exploration and then to practical application, which is a more intuitive and effective learning path than simply reading the report. Navigation buttons allow non-linear exploration for users already familiar with the concepts. -->
+<!-- Visualization & Content Choices: 
+- Report Info: Core concepts of IRT parameters (a, b, c). Goal: Allow users to understand the individual and combined effect of each parameter on item characteristics. Viz/Method: Interactive scatter plot (Item Characteristic Curve) using Chart.js on a Canvas. Interaction: Users manipulate sliders for a, b, and c parameters, and the chart updates in real-time. Justification: This direct manipulation provides immediate visual feedback, creating a powerful learning experience that is far more effective than static images or text alone.
+- Report Info: Comparison of TCT vs. TRI and different IRT models. Goal: Organize and compare foundational theories. Viz/Method: Structured HTML/CSS cards with clear headings and bullet points. Interaction: Simple navigation allows users to focus on one concept at a time. Justification: A clean, organized textual presentation is best for theoretical concepts.
+- Report Info: Explanation of RuntimeWarnings. Goal: Inform users about practical computational issues. Viz/Method: Accordion-style collapsible sections. Interaction: Users click to expand and read details about specific warnings. Justification: This hides complex details by default, preventing overwhelm while making the information accessible to those interested.
+- Library/Method: Chart.js for its simplicity, performance on Canvas, and excellent responsiveness. Tailwind CSS for rapid, modern, and responsive UI development.
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background-color: #FDFBF8;
+color: #4A4A4A;
+}
+.nav-button {
+transition: all 0.3s ease;
+}
+.nav-button.active {
+color: #D97706;
+border-bottom-color: #D97706;
+font-weight: 600;
+}
+.card {
+background-color: #FFFFFF;
+border: 1px solid #F3F4F6;
+border-radius: 0.75rem;
+box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+transition: all 0.3s ease;
+}
+.slider-thumb::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+background: #F59E0B;
+cursor: pointer;
+border-radius: 50%;
+border: 2px solid white;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.slider-thumb::-moz-range-thumb {
+width: 20px;
+height: 20px;
+background: #F59E0B;
+cursor: pointer;
+border-radius: 50%;
+border: 2px solid white;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.chart-container {
+position: relative;
+width: 100%;
+max-width: 800px;
+margin-left: auto;
+margin-right: auto;
+height: 45vh;
+max-height: 500px;
+}
+.content-section {
+display: none;
+}
+.content-section.active {
+display: block;
+}
+</style>
+</head>
+<body class="antialiased">
+
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+<header class="text-center mb-12">
+<h1 class="text-4xl font-bold text-gray-800 mb-2">Dashboard Interativo da Teoria de Resposta ao Item (TRI)</h1>
+<p class="text-lg text-gray-600 max-w-3xl mx-auto">Uma exploração visual dos Parâmetros do Modelo Logístico de 3 Parâmetros (ML3P) baseada no relatório técnico da biblioteca `girth`.</p>
+</header>
+
+<nav class="flex justify-center border-b border-gray-200 mb-12">
+<button data-target="intro" class="nav-button active text-gray-500 hover:text-gray-700 border-b-2 border-transparent px-4 py-3 text-sm font-medium">Introdução</button>
+<button data-target="fundamentals" class="nav-button text-gray-500 hover:text-gray-700 border-b-2 border-transparent px-4 py-3 text-sm font-medium">Fundamentos da TRI</button>
+<button data-target="explorer" class="nav-button text-gray-500 hover:text-gray-700 border-b-2 border-transparent px-4 py-3 text-sm font-medium">Análise Interativa</button>
+<button data-target="diagnostics" class="nav-button text-gray-500 hover:text-gray-700 border-b-2 border-transparent px-4 py-3 text-sm font-medium">Diagnóstico Computacional</button>
+</nav>
+
+<main>
+<section id="intro" class="content-section active">
+<div class="max-w-4xl mx-auto">
+<div class="card p-8">
+<h2 class="text-2xl font-bold text-gray-800 mb-4">Bem-vindo à Análise Psicométrica Moderna</h2>
+<p class="text-gray-700 mb-4">
+Esta aplicação web interativa traduz os conceitos complexos do relatório técnico sobre a Teoria de Resposta ao Item (TRI) em uma experiência de aprendizado visual e prática. O objetivo é desmistificar os parâmetros do Modelo Logístico de 3 Parâmetros (ML3P) — dificuldade, discriminação e acerto casual — que são a base de avaliações de larga escala como o ENEM e o PISA.
+</p>
+<p class="text-gray-700">
+Aqui, você poderá não apenas ler sobre a teoria, mas também manipular diretamente os parâmetros para ver como eles moldam a característica de um item de teste em tempo real. Explore as seções para construir seu conhecimento desde os fundamentos até as implicações práticas da análise computacional.
+</p>
+</div>
+</div>
+</section>
+
+<section id="fundamentals" class="content-section">
+<div class="max-w-5xl mx-auto">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Fundamentos da Teoria de Resposta ao Item</h2>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="card p-6">
+<h3 class="text-xl font-semibold text-amber-700 mb-3">Teoria Clássica dos Testes (TCT)</h3>
+<p class="text-gray-600 mb-4">Foca no **escore total** do teste. Os parâmetros dos itens (ex: dificuldade) dependem da amostra de respondentes, o que limita a comparabilidade entre diferentes testes e populações.</p>
+<ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+<li>Análise no nível do teste.</li>
+<li>Parâmetros dependentes da amostra.</li>
+<li>Simples e robusta para contextos específicos.</li>
+</ul>
+</div>
+<div class="card p-6 border-2 border-amber-500">
+<h3 class="text-xl font-semibold text-amber-700 mb-3">Teoria de Resposta ao Item (TRI)</h3>
+<p class="text-gray-600 mb-4">Foca no **item individual**. Modela a probabilidade de um indivíduo acertar um item com base em sua habilidade latente. Seus parâmetros são **invariantes**, permitindo comparações robustas.</p>
+<ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+<li>Análise no nível do item.</li>
+<li>Parâmetros independentes da amostra (invariância).</li>
+<li>Ideal para bancos de itens e testes adaptativos (CAT).</li>
+</ul>
+</div>
+</div>
+<div class="mt-12">
+<h3 class="text-2xl font-bold text-center text-gray-800 mb-6">A Família de Modelos Logísticos</h3>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="card p-6 text-center">
+<h4 class="font-bold text-lg mb-2">1PL (Rasch)</h4>
+<p class="text-sm text-gray-600">Considera apenas a **Dificuldade (b)**. Assume que todos os itens discriminam igualmente.</p>
+</div>
+<div class="card p-6 text-center">
+<h4 class="font-bold text-lg mb-2">2PL</h4>
+<p class="text-sm text-gray-600">Adiciona a **Discriminação (a)**, permitindo que os itens variem em sua capacidade de diferenciar habilidades.</p>
+</div>
+<div class="card p-6 text-center">
+<h4 class="font-bold text-lg mb-2">3PL</h4>
+<p class="text-sm text-gray-600">Adiciona o **Acerto Casual (c)**, modelando a probabilidade de acerto ao acaso (chute).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="explorer" class="content-section">
+<div class="max-w-6xl mx-auto">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Análise Interativa dos Parâmetros</h2>
+<p class="text-center text-gray-600 mb-8">Use os controles deslizantes para ver como cada parâmetro afeta a Curva Característica do Item (CCI).</p>
+<div class="grid lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 card p-6">
+<div class="chart-container">
+<canvas id="iccChart"></canvas>
+</div>
+</div>
+<div class="space-y-6">
+<div class="card p-6">
+<label for="paramA" class="block text-lg font-semibold text-gray-700 mb-2">Discriminação (a): <span id="valA" class="font-bold text-amber-600">1.0</span></label>
+<input type="range" id="paramA" min="0.1" max="3.0" value="1.0" step="0.1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb">
+<p id="descA" class="text-sm text-gray-600 mt-2">Mede a capacidade do item de diferenciar habilidades. Valores altos criam uma curva mais íngreme.</p>
+</div>
+<div class="card p-6">
+<label for="paramB" class="block text-lg font-semibold text-gray-700 mb-2">Dificuldade (b): <span id="valB" class="font-bold text-amber-600">0.0</span></label>
+<input type="range" id="paramB" min="-3.0" max="3.0" value="0.0" step="0.1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb">
+<p id="descB" class="text-sm text-gray-600 mt-2">Indica o nível de habilidade necessário para uma boa chance de acerto. Valores altos movem a curva para a direita.</p>
+</div>
+<div class="card p-6">
+<label for="paramC" class="block text-lg font-semibold text-gray-700 mb-2">Acerto Casual (c): <span id="valC" class="font-bold text-amber-600">0.20</span></label>
+<input type="range" id="paramC" min="0.0" max="0.5" value="0.20" step="0.01" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb">
+<p id="descC" class="text-sm text-gray-600 mt-2">Probabilidade de acerto ao acaso (chute). Eleva o ponto inicial da curva.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="diagnostics" class="content-section">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Diagnóstico Computacional: Entendendo os Avisos</h2>
+<div class="card p-8">
+<p class="text-gray-700 mb-6">Durante a estimação dos parâmetros TRI, especialmente com o modelo de 3 parâmetros, é comum encontrar avisos computacionais (`RuntimeWarnings`). Estes não são erros que param o programa, mas sim sinais de que o algoritmo encontrou instabilidades numéricas. Compreendê-los é crucial para uma análise crítica dos resultados.</p>
+<div class="space-y-4">
+<div>
+<h3 class="text-lg font-semibold text-amber-700">`divide by zero encountered in log`</h3>
+<p class="text-gray-600 mt-1">
+**O que significa?** O algoritmo de otimização, em uma de suas iterações, testou uma combinação de parâmetros que resultou em uma probabilidade de acerto (ou erro) calculada como zero. O cálculo do logaritmo de zero é matematicamente indefinido, gerando o aviso.
+</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-amber-700">`invalid value encountered in...`</h3>
+<p class="text-gray-600 mt-1">
+**O que significa?** Este é um aviso mais genérico que indica uma operação matemática instável, como uma divisão por um número muito próximo de zero ou `infinito - infinito`. Ocorre quando o algoritmo explora regiões "ruins" do espaço de parâmetros.
+</p>
+</div>
+<div class="pt-4 border-t mt-6">
+<h3 class="text-xl font-bold text-gray-800 mb-3">Implicações e Recomendações</h3>
+<ul class="list-disc list-inside space-y-2 text-gray-700">
+<li>**Não invalida os resultados automaticamente:** O algoritmo pode se recuperar e convergir para uma solução válida.</li>
+<li>**Sinal de Alerta:** Indica que a amostra pode ser pequena para a complexidade do modelo, ou que um modelo mais simples (como o 2PL) pode ser mais apropriado.</li>
+<li>**Ação Recomendada:** Inspecione criticamente os parâmetros estimados. Verifique se os valores são psicometricamente plausíveis (e.g., $0 \le c \le 0.35$). Para aplicações de alto impacto, valide os resultados com softwares mais robustos.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const navButtons = document.querySelectorAll('.nav-button');
+const contentSections = document.querySelectorAll('.content-section');
+
+navButtons.forEach(button => {
+button.addEventListener('click', () => {
+const targetId = button.dataset.target;
+
+navButtons.forEach(btn => btn.classList.remove('active'));
+button.classList.add('active');
+
+contentSections.forEach(section => {
+if (section.id === targetId) {
+section.classList.add('active');
+} else {
+section.classList.remove('active');
+}
+});
+});
+});
+const paramA = document.getElementById('paramA');
+const paramB = document.getElementById('paramB');
+const paramC = document.getElementById('paramC');
+const valA = document.getElementById('valA');
+const valB = document.getElementById('valB');
+const valC = document.getElementById('valC');
+const descA = document.getElementById('descA');
+const descB = document.getElementById('descB');
+const descC = document.getElementById('descC');
+
+const ctx = document.getElementById('iccChart').getContext('2d');
+let iccChart;
+
+const discriminationDescriptions = {
+low: "Discriminação muito baixa (< 0.5). O item não diferencia bem entre as habilidades.",
+medium: "Discriminação moderada (0.5 - 1.5). O item tem uma capacidade razoável de diferenciar habilidades.",
+high: "Discriminação alta (> 1.5). O item é muito eficaz para diferenciar habilidades próximas."
+};
+
+const difficultyDescriptions = {
+easy: "Item fácil (b < -1.0). Adequado para indivíduos com baixa habilidade.",
+average: "Item de dificuldade média (-1.0 ≤ b ≤ 1.0).",
+hard: "Item difícil (b > 1.0). Adequado para indivíduos com alta habilidade."
+};
+
+const guessingDescriptions = {
+low: "Acerto casual baixo (c < 0.15). O 'chute' tem pouco impacto.",
+medium: "Acerto casual moderado (0.15 ≤ c ≤ 0.30). Típico de itens de múltipla escolha.",
+high: "Acerto casual alto (c > 0.30). Pode indicar um item mal formulado."
+};
+
+function getParameterDescription(value, type) {
+if (type === 'a') {
+if (value < 0.5) return discriminationDescriptions.low;
+if (value <= 1.5) return discriminationDescriptions.medium;
+return discriminationDescriptions.high;
+}
+if (type === 'b') {
+if (value < -1.0) return difficultyDescriptions.easy;
+if (value <= 1.0) return difficultyDescriptions.average;
+return difficultyDescriptions.hard;
+}
+if (type === 'c') {
+if (value < 0.15) return guessingDescriptions.low;
+if (value <= 0.30) return guessingDescriptions.medium;
+return guessingDescriptions.high;
+}
+}
+
+function threePL(theta, a, b, c) {
+return c + (1 - c) * (1 / (1 + Math.exp(-a * (theta - b))));
+}
+
+function updateChart() {
+const a = parseFloat(paramA.value);
+const b = parseFloat(paramB.value);
+const c = parseFloat(paramC.value);
+
+valA.textContent = a.toFixed(2);
+valB.textContent = b.toFixed(2);
+valC.textContent = c.toFixed(2);
+
+descA.textContent = getParameterDescription(a, 'a');
+descB.textContent = getParameterDescription(b, 'b');
+descC.textContent = getParameterDescription(c, 'c');
+
+const thetaValues = [];
+const probValues = [];
+for (let i = -4; i <= 4; i += 0.1) {
+thetaValues.push(i.toFixed(1));
+probValues.push(threePL(i, a, b, c));
+}
+
+if (iccChart) {
+iccChart.data.labels = thetaValues;
+iccChart.data.datasets[0].data = probValues;
+iccChart.update();
+} else {
+iccChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: thetaValues,
+datasets: [{
+label: 'Probabilidade de Acerto',
+data: probValues,
+borderColor: '#D97706',
+backgroundColor: 'rgba(245, 158, 11, 0.1)',
+borderWidth: 3,
+pointRadius: 0,
+tension: 0.4,
+fill: true,
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+scales: {
+x: {
+title: {
+display: true,
+text: 'Habilidade (θ)',
+font: { size: 14 }
+},
+ticks: {
+maxTicksLimit: 9
+}
+},
+y: {
+title: {
+display: true,
+text: 'Probabilidade de Acerto P(θ)',
+font: { size: 14 }
+},
+min: 0,
+max: 1
+}
+},
+plugins: {
+legend: {
+display: false
+},
+tooltip: {
+mode: 'index',
+intersect: false,
+callbacks: {
+title: function(context) {
+return `Habilidade (θ) = ${context[0].label}`;
+},
+label: function(context) {
+let label = context.dataset.label || '';
+if (label) {
+label += ': ';
+}
+if (context.parsed.y !== null) {
+label += (context.parsed.y * 100).toFixed(1) + '%';
+}
+return label;
+}
+}
+}
+}
+}
+});
+}
+}
+
+paramA.addEventListener('input', updateChart);
+paramB.addEventListener('input', updateChart);
+paramC.addEventListener('input', updateChart);
+
+updateChart();
+});
+</script>
+</body>
+</html>
